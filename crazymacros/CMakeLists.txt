@@ -1,0 +1,5 @@
+foreach( PROG one two three four five six seven eight )
+  add_executable( crazymacro_${PROG} crazymacros.c  )
+  set_property(TARGET crazymacro_${PROG} PROPERTY C_STANDARD 99 )
+  target_compile_definitions(crazymacro_${PROG} PUBLIC PROG=${PROG})
+endforeach()

@@ -4,3 +4,4 @@ project( examples )
 
 add_subdirectory( floatbits )
 add_subdirectory( cstack )
+add_subdirectory( crazymacros )
