@@ -18,9 +18,15 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 include(GoogleTest)
 
+find_package(PkgConfig REQUIRED)
+pkg_search_module(FFTW REQUIRED fftw3 IMPORTED_TARGET)
+
+find_package( Eigen3 3.3 REQUIRED NO_MODULE )
+
 add_subdirectory( argcargv )
 add_subdirectory( bitmagic )
 add_subdirectory( crazymacros )
 add_subdirectory( cstack )
 add_subdirectory( eigen )
+add_subdirectory( fftw3simple )
 add_subdirectory( floatbits )
