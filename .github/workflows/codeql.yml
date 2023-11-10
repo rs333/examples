@@ -51,7 +51,7 @@ jobs:
     - name: Install dependency
       run: |
         sudo apt update
-        sudo apt-get -y install libeigen3-dev
+        sudo apt-get -y install libeigen3-dev fftw3-dev
         
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
