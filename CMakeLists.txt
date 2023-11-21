@@ -39,6 +39,17 @@ find_package( Eigen3 3.3 REQUIRED NO_MODULE )
 FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
 FetchContent_MakeAvailable(json)
 
+######################################################
+# Enable clang-analyze static analysis
+######################################################
+if(DEFINED ENV{CC})
+    set(CMAKE_C_COMPILER $ENV{CC})
+endif()
+
+if(DEFINED ENV{CXX})
+    set(CMAKE_CXX_COMPILER $ENV{CXX})
+endif()
+
 add_subdirectory( argcargv )
 add_subdirectory( bitmagic )
 add_subdirectory( crazymacros )
