@@ -1,6 +1,6 @@
+#include "stack.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack.h"
 
 struct node {
     Item data;
@@ -20,59 +20,59 @@ static void terminate(const char *message)
 
 Stack stack_create(int size)
 {
-    Stack s = malloc(sizeof(struct stack_type));
-    if (s == NULL)
+    Stack stack = malloc(sizeof(struct stack_type));
+    if (stack == NULL)
     {
         terminate("Failed to allocate memory for stack.");
     }
-    s->top = NULL;
-    return s;
+    stack->top = NULL;
+    return stack;
 }
 
-void stack_destroy(Stack s)
+void stack_destroy(Stack stack)
 {
-    stack_empty(s); 
-    free(s);
+    stack_empty(stack); 
+    free(stack);
 }
 
-inline bool is_stack_empty(Stack s)
+inline bool is_stack_empty(Stack stack)
 {
-    return s->top == NULL;
+    return stack->top == NULL;
 }
 
-inline bool is_stack_full(Stack s)
+inline bool is_stack_full(Stack stack)
 {
     return false;
 }
 
-void stack_push(Stack s, int i)
+void stack_push(Stack stack, int item)
 {
     struct node *new_top = malloc(sizeof(struct node));
     if( new_top == NULL ){
         terminate("Stack is full!");
     }
-    new_top->data = i;
-    new_top->prev = s->top;
-    s->top = new_top;
+    new_top->data = item;
+    new_top->prev = stack->top;
+    stack->top = new_top;
 }
 
-int stack_pop(Stack s){
+int stack_pop(Stack stack){
     struct node *old_top;
     Item item;
 
-    if( is_stack_empty(s) ){
+    if( is_stack_empty(stack) ){
         terminate("Stack is empty!");
     }
-    old_top = s->top;
+    old_top = stack->top;
     item = old_top->data;
-    s->top = old_top->prev;
+    stack->top = old_top->prev;
     free(old_top); 
 
     return item;
 }
 
-void stack_empty(Stack s){
-    while (!is_stack_empty(s)){
-        stack_pop(s);
+void stack_empty(Stack stack){
+    while (!is_stack_empty(stack)){
+        stack_pop(stack);
     }
 }

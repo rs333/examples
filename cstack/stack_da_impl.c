@@ -1,6 +1,6 @@
+#include "stack.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack.h"
 
 struct stack_type
 {
@@ -17,52 +17,52 @@ static void terminate(const char *message)
 
 Stack stack_create(int size)
 {
-    Stack s = malloc(sizeof(struct stack_type));
-    if (s == NULL)
+    Stack stack = malloc(sizeof(struct stack_type));
+    if (stack == NULL)
     {
         terminate("Failed to allocate memory for stack.");
     }
-    s->contents = malloc(size * sizeof(Item));
-    if( s->contents == NULL){
-        free(s);
+    stack->contents = malloc(size * sizeof(Item));
+    if( stack->contents == NULL){
+        free(stack);
         terminate("Failed to allocate memory for stack.");
     }
-    s->top = 0;
-    s->size = size;
-    return s;
+    stack->top = 0;
+    stack->size = size;
+    return stack;
 }
 
-void stack_destroy(Stack s)
+void stack_destroy(Stack stack)
 {
-    free(s->contents);
-    free(s);
+    free(stack->contents);
+    free(stack);
 }
 
-inline bool is_stack_empty(Stack s)
+inline bool is_stack_empty(Stack stack)
 {
-    return s->top == 0;
+    return stack->top == 0;
 }
 
-inline bool is_stack_full(Stack s)
+inline bool is_stack_full(Stack stack)
 {
-    return s->top >= s->size;
+    return stack->top >= stack->size;
 }
 
-void stack_push(Stack s, int i)
+void stack_push(Stack stack, int item)
 {
-    if( is_stack_full(s) ){
+    if( is_stack_full(stack) ){
         terminate("Stack is full!");
     }
-    s->contents[s->top++]=i;
+    stack->contents[stack->top++]=item;
 }
 
-int stack_pop(Stack s){
-    if( is_stack_empty(s) ){
+int stack_pop(Stack stack){
+    if( is_stack_empty(stack) ){
         terminate("Stack is empty!");
     }
-    return s->contents[--(s->top)];
+    return stack->contents[--(stack->top)];
 }
 
-void stack_empty(Stack s){
-    s->top = 0;
+void stack_empty(Stack stack){
+    stack->top = 0;
 }

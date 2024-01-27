@@ -1,11 +1,18 @@
 cmake_minimum_required(VERSION 3.22)
 
 project( examples )
-set( CMAKE_C_STANDARD 99 )
+set( CMAKE_C_STANDARD 11 )
 
 # GoogleTest requires at least C++14
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_C_CLANG_TIDY
+    clang-tidy;
+    --checks=*,cert-*,google-*,-llvmlibc-*,-altera-*,-cpp*;
+    --fix;
+)
 
 enable_testing()
 include(FetchContent)
