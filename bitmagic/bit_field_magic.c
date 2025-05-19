@@ -22,7 +22,8 @@ union negative_bits_union {
   } bits;
 };
 
-int main(int argc, char *argv[]){
+const int NUM_LINES=32;
+int main(int argc, char *argv[]){ // NOLINT
   // No real reason for initializing these differently.
   union positive_bits_union some_positive_bits = {
     .bits ={ -1,-1,-1} 
@@ -40,7 +41,7 @@ int main(int argc, char *argv[]){
   printf("------------------------------------+--------------------------------\n");
   printf("           Negative Bits            |          Positive Bits \n");
   printf("------------------------------------+--------------------------------\n");
-  for( int i=0; i< 32; i++){
+  for( int i=0; i<NUM_LINES; i++){
     some_positive_bits.bits.a++;
     some_positive_bits.bits.b++;
     some_positive_bits.bits.c++;

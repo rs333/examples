@@ -23,7 +23,7 @@ VERSION(PROG);
 #define CALL_VERSION_FUNC(version) \
   VERSION_FUNC_NAME(version)();
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[]){ // NOLINT
   CALL_VERSION_FUNC(PROG);
   return 0;
 }

@@ -1,0 +1,12 @@
+version: "3"
+services:
+  postfix:
+    build: .
+    ports: 
+      - "0.0.0.0:25:25"
+    hostname: postfix
+  
+# networks:
+#   mine:
+#     external: true
+#     name: host
