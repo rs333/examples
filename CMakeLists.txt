@@ -11,7 +11,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_C_CLANG_TIDY
     clang-tidy;
     --checks=*,cert-*,google-*,-llvmlibc-*,-altera-*,-cpp*;
-    --fix;
+)
+set(CMAKE_CXX_CLANG_TIDY
+    clang-tidy;
+    --checks=*,cert-*,google-*,-llvmlibc-*,-altera-*;
 )
 
 enable_testing()
@@ -54,3 +57,4 @@ add_subdirectory( eigen )
 add_subdirectory( fftw3simple )
 add_subdirectory( floatbits )
 add_subdirectory( jsondefault )
+add_subdirectory( ruleof035 )
